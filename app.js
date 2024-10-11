@@ -4,6 +4,7 @@ let score = 0;
 let progress = 0;
 let memoryCards = [];
 let flippedCards = [];
+let matchedPairs = 0;
 
 // Quiz starten
 function startQuiz() {
@@ -11,6 +12,7 @@ function startQuiz() {
   currentIndex = 0;
   score = 0;
   progress = 0;
+  document.getElementById('gameArea').innerHTML = ''; // Reset game area
   displayQuestion();
 }
 
@@ -60,22 +62,12 @@ function updateProgress() {
   progressBarFill.style.width = progress + '%';
 }
 
-// Fortschritt anzeigen
-function viewProgress() {
-  const progressBar = document.createElement('div');
-  progressBar.id = 'progress-bar';
-  progressBar.innerHTML = '<div id="progress-bar-fill"></div>';
-  const progressSection = document.getElementById('progress');
-  progressSection.classList.remove('hidden');
-  progressSection.innerHTML = '<h2>Dein Fortschritt:</h2>';
-  progressSection.appendChild(progressBar);
-  updateProgress();
-}
-
 // Memory-Spiel starten
 function startMemory() {
   memoryCards = generateMemoryCards();
   flippedCards = [];
+  matchedPairs = 0;
+  document.getElementById('gameArea').innerHTML = ''; // Reset game area
   displayMemoryCards();
 }
 
@@ -128,6 +120,10 @@ function checkMatch() {
   if (firstCard.dataset.symbol === secondCard.dataset.symbol) {
     firstCard.style.visibility = 'hidden';
     secondCard.style.visibility = 'hidden';
+    matchedPairs++;
+    if (matchedPairs === memoryCards.length / 2) {
+      document.getElementById('gameArea').innerHTML = '<h2>Glückwunsch! Du hast alle Paare gefunden!</h2>';
+    }
   } else {
     firstCard.innerHTML = '?';
     secondCard.innerHTML = '?';
