@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +11,11 @@
     <header>
       <h1>EchoLoop</h1>
       <p>Verbessere dein Gedächtnis und trainiere dein Wissen mit Quizzen und Spielen!</p>
-      <button onclick="startQuiz()">Quiz starten</button>
-      <button onclick="startMemory()">Memory-Spiel</button>
-      <button onclick="viewProgress()">Fortschritt anzeigen</button>
+      <div class="menu-buttons">
+        <button class="btn" onclick="startQuiz()">Quiz starten</button>
+        <button class="btn" onclick="startMemory()">Memory-Spiel</button>
+        <button class="btn" onclick="viewProgress()">Fortschritt anzeigen</button>
+      </div>
     </header>
     
     <main id="gameArea">
